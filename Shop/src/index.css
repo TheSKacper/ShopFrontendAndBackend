@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* NAV */
+.nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link.active {
+  color: rgb(255, 109, 255);
+}
+
+.nav-link:hover {
+  color: blue;
+}
+
+/* HOME */
+.home-header {
+  min-height: 100vh;
+  position: relative;
+  background-image: url('./assets/header-shop.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.box-header {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.home-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.home-box {
+  text-align: center;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 2px 4px 6px;
+  transition: background-color 1s;
+}
+
+.home-box:hover {
+  background-color: rgb(246, 159, 246);
+}
+
+/* LOGIN */
+
+.login {
+  min-height: 100vh;
+  display: flex;
+}
+
+.login-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+.login-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.login-form {
+  width: 70%;
+}
+
+.form-label {
+  letter-spacing: 3px;
+}
+
+/* Contact */
+
+.contact {
+  min-height: 100vh;
+}
+
+.contact-left {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.contact-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.contact-image {
+  width: 60%;
+  height: 300px;
+}
+
+.first {
+  background-image: url('./assets/woman-7607340_1280.jpg');
+  background-position: 45% 25%;
+}
+
+.second {
+  background-image: url('./assets/mentor-2494673_1280.jpg');
+  background-position: 65% 8%;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+}
+
+/* CARD */
+
+.card {
+  width: 16rem;
+}
+
+/* SHOP */
+
+.shop {
+  min-height: 100vh;
+}
+
+/* SHOPDETAIL */
+
+.shopDetail {
+  min-height: 100vh;
+}
+
+.shopDetail-item {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.shopDetail-p {
+  color: white;
+}
+
+/* SHOPPING */
+
+.shopping {
+  min-height: 100vh;
+}
+
+/* PRODUCTCRUD */
+
+.productCrud {
+  min-height: 100vh;
+}
+
+.crudImg {
+  width: 50px;
+}
