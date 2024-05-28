@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { LoginRequest, LoginResponse } from '../model/login';
 import ApiService from '../service/ApiService';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { setLogin } from '../reducer/loginSlice';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../store/store';
 
 const Login = () => {
   const [data, setDate] = useState<LoginRequest>({
@@ -12,7 +11,6 @@ const Login = () => {
     password: '',
   });
   const [register, setRegister] = useState<boolean>(false);
-  const loginReducer = useSelector((state: RootState) => state.login);
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
@@ -30,6 +28,7 @@ const Login = () => {
       .then((res) => {
         dispatch(
           setLogin({
+            id:res.data.id ,
             username: res.data.username,
             role: res.data.role,
             success: res.data.success,
@@ -40,7 +39,6 @@ const Login = () => {
       .catch((error: Error) => {
         console.log(error);
       });
-    console.log(loginReducer);
   };
 
   const handleRegister = () => {
@@ -54,7 +52,7 @@ const Login = () => {
   return (
     <div className='login'>
       <div className='login-left'>
-        <h1>Login Side</h1>
+        {!register ? <h1>Login Side</h1> : <h1>Register side</h1>}
         {!register ? (
           <p>You do not have an account ? </p>
         ) : (

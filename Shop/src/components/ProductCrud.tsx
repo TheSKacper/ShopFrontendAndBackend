@@ -29,15 +29,15 @@ const ProductCrud = () => {
         .then((res) => {
           console.log(res.data);
           fetchProducts();
-          setEditMode(false); // Reset the edit mode
-          setCurrentId(''); // Clear the current ID
+          setEditMode(false);
+          setCurrentId('');
           setData({
             title: '',
             category: '',
             description: '',
             price: 0,
             image: '',
-          }); // Clear the form data
+          });
         })
         .catch((error: Error) => {
           console.log(error);

@@ -4,6 +4,7 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
+  id:string,
   username: string;
   role: string;
   success: boolean;

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+
 const Home = () => {
+
   return (
     <div className='home'>
       <header className='home-header'>

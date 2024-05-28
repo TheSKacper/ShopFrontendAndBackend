@@ -10,7 +10,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    dispatch(setLogin({ username: '', role: '', success: false }));
+    dispatch(setLogin({id:'', username: '', role: '', success: false }));
   };
 
   return (
@@ -39,6 +39,17 @@ const NavBar = () => {
                 to='/shop'
               >
                 Shop
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                onClick={() => setActive('about')}
+                className={
+                  active === 'about' ? 'nav-link active' : 'nav-link'
+                }
+                to='/about'
+              >
+                About
               </Link>
             </li>
             <li className='nav-item'>

@@ -101,47 +101,6 @@ body {
   min-height: 100vh;
 }
 
-.contact-left {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-}
-
-.contact-right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-}
-
-.contact-image {
-  width: 60%;
-  height: 300px;
-}
-
-.first {
-  background-image: url('./assets/woman-7607340_1280.jpg');
-  background-position: 45% 25%;
-}
-
-.second {
-  background-image: url('./assets/mentor-2494673_1280.jpg');
-  background-position: 65% 8%;
-}
-
-.contact-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px;
-}
-
 /* CARD */
 
 .card {
@@ -185,3 +144,50 @@ body {
 .crudImg {
   width: 50px;
 }
+
+/* ABOUT */
+
+.about {
+  min-height: 100vh;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 60px;
+  background-color: black;
+  color: white;
+}
+
+.about-left {
+  width: 50%;
+}
+
+.about-image {
+  width: 60%;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+}
+
+.first {
+  background-image: url('./assets/woman-7607340_1280.jpg');
+  background-position: 45% 25%;
+}
+
+.second {
+  background-image: url('./assets/mentor-2494673_1280.jpg');
+  background-position: 65% 8%;
+}
+

@@ -8,6 +8,7 @@ import ShopDetail from './components/ShopDetail';
 import Login from './components/Login';
 import Shopping from './components/Shopping';
 import ProductCrud from './components/ProductCrud';
+import About from './components/About';
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/shopping' element={<Shopping />}></Route>
         <Route path='/crud' element={<ProductCrud />}></Route>
+        <Route path='/about' element={<About />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

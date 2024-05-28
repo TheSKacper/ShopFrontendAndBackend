@@ -5,7 +5,7 @@ import ShopCard from './ShopCard';
 import FilterByCategory from './FilterByCategory';
 
 const Shop = () => {
-  const {products,fetchProducts} = useProducts();
+  const {products} = useProducts();
   const [searchName, setSearchName] = useState('');
   const [searchCategory, setSearchCategory] = useState('');
 
