@@ -3,6 +3,7 @@ import { Ratings, RequestRating } from '../model/ratings';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import ApiService from '../service/ApiService';
+import { useRatings } from '../hooks/useRatings';
 
 interface Props {
   idProduct: string;
@@ -16,9 +17,9 @@ const Rating = (product: Props) => {
     comment: '',
   });
 
-  const loginRedux = useSelector((state: RootState) => state.login);
+  const {fetchRatings} = useRatings()
 
-  console.log(product.idProduct);
+  const loginRedux = useSelector((state: RootState) => state.login);
 
   useEffect(() => {
     setData({ ...data, userId: loginRedux.id, productId: product.idProduct });
@@ -30,14 +31,13 @@ const Rating = (product: Props) => {
       ...prev,
       [name]: value,
     }));
-    console.log(data);
   };
 
   const handleCreateRating = () => {
     const jsonData: Ratings = data;
     try {
       ApiService.post('/rating', jsonData).then((res) => {
-        console.log(res.data);
+        fetchRatings()
         console.log('created');
       });
     } catch (error) {
@@ -47,8 +47,8 @@ const Rating = (product: Props) => {
   };
 
   return (
-    <div className='container'>
-      <div className='mb-3 w-25 text-white'>
+    <div className=''>
+      <div className='mb-3 mt-4 w-100 text-white'>
         <label className='form-label'>Email address</label>
         <input
           type='number'
@@ -58,7 +58,7 @@ const Rating = (product: Props) => {
           className='form-control'
         />
       </div>
-      <div className='w-25 text-white'>
+      <div className='w-100 text-white'>
         <label className='form-label'>Example textarea</label>
         <textarea
           name='comment'
@@ -67,7 +67,10 @@ const Rating = (product: Props) => {
           className='form-control'
         ></textarea>
       </div>
-      <button className='btn btn-primary' onClick={handleCreateRating}>
+      <button
+        className='btn btn-success mb-4 mt-3'
+        onClick={handleCreateRating}
+      >
         Create
       </button>
     </div>

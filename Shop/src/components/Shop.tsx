@@ -20,6 +20,11 @@ const Shop = () => {
     return foundCategory && foundName;
   });
 
+  if(products?.length === -1 || !products)
+    {
+      return <div className='w-100'>Loading...</div>
+    }
+
   return (
     <div className='shop container'>
       <FilterByName searchName={(name: string) => setSearchName(name)} />

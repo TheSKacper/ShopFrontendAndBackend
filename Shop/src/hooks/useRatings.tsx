@@ -8,7 +8,7 @@ export const useRatings = () => {
   const fetchRatings = async () => {
     ApiService.get<Ratings[]>('/rating')
       .then((res) => {
-        setRatings(res.data);
+        setRatings(res.data)
       })
       .catch((error: Error) => {
         console.log(error);
@@ -16,7 +16,7 @@ export const useRatings = () => {
   };
 
   useEffect(() => {
-    fetchRatings;
+    fetchRatings();
   }, []);
   return { ratings, fetchRatings };
 };
