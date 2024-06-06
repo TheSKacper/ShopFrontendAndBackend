@@ -40,7 +40,7 @@ const Login = () => {
         );
       })
       .catch((error: Error) => {
-        console.log(error);
+        notify('Something bad' + error);
       });
   };
 
@@ -55,7 +55,7 @@ const Login = () => {
         notify('Rejestracja pomyślnie, witamy na pokładzie ' + data.username);
       })
       .catch((error: Error) => {
-        console.log(error);
+        notify('Something bad' + error);
       });
   };
 

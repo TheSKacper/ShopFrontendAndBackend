@@ -17,8 +17,6 @@ const ShopDetail = () => {
   const productFound = products?.find((item) => item.id === id);
   const ratingFound = ratings?.filter((item) => item.productId === id);
 
-  console.log(ratingFound);
-
   return (
     <div className='shopDetail container-fluid bg-black'>
       <div className='shopDetail-box d-flex flex-column justify-content-center align-items-center '>

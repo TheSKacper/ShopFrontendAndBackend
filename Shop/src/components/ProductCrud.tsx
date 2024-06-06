@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useProducts } from '../hooks/useProducts';
 import { Product, RequestProduct } from '../model/product';
 import ApiService from '../service/ApiService';
+import { toast } from 'react-toastify';
 
 const ProductCrud = () => {
   const { products, fetchProducts } = useProducts();
@@ -14,6 +15,7 @@ const ProductCrud = () => {
   });
   const [editMode, setEditMode] = useState<boolean>(false);
   const [currentId, setCurrentId] = useState<string>('');
+  const notify = (message: string) => toast(message);
 
   const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,8 +29,7 @@ const ProductCrud = () => {
   const handleSaveProduct = () => {
     if (editMode) {
       ApiService.put(`/product/${currentId}`, data)
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
           fetchProducts();
           setEditMode(false);
           setCurrentId('');
@@ -41,12 +42,11 @@ const ProductCrud = () => {
           });
         })
         .catch((error: Error) => {
-          console.log(error);
+          notify('Something bad' + error);
         });
     } else {
       ApiService.post('/product', data)
-        .then((res) => {
-          console.log(res.data);
+        .then(() => {
           fetchProducts();
           setData({
             title: '',
@@ -54,10 +54,10 @@ const ProductCrud = () => {
             description: '',
             price: 0,
             image: '',
-          }); // Clear the form data
+          });
         })
         .catch((error: Error) => {
-          console.log(error);
+          notify('Something bad' + error);
         });
     }
   };
@@ -70,12 +70,11 @@ const ProductCrud = () => {
 
   const handleDeleteProduct = (id: string) => {
     ApiService.delete(`/product/${id}`)
-      .then((res) => {
-        console.log(res.data);
+      .then(() => {
         fetchProducts();
       })
       .catch((error: Error) => {
-        console.log(error);
+        notify('Something bad' + error);
       });
   };
 

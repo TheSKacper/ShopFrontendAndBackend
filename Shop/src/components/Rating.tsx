@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import ApiService from '../service/ApiService';
 import { useRatings } from '../hooks/useRatings';
+import { toast } from 'react-toastify';
 
 interface Props {
   idProduct: string;
@@ -17,7 +18,8 @@ const Rating = (product: Props) => {
     comment: '',
   });
 
-  const {fetchRatings} = useRatings()
+  const { fetchRatings } = useRatings();
+  const notify = (message: string) => toast(message);
 
   const loginRedux = useSelector((state: RootState) => state.login);
 
@@ -37,13 +39,11 @@ const Rating = (product: Props) => {
     const jsonData: Ratings = data;
     try {
       ApiService.post('/rating', jsonData).then(() => {
-        fetchRatings()
-        console.log('created');
+        fetchRatings();
       });
     } catch (error) {
-      console.log(error);
+      notify('Something bad' + error);
     }
-    console.log(data);
   };
 
   return (
