@@ -17,6 +17,7 @@ const ProductCrud = () => {
 
   const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -96,20 +97,20 @@ const ProductCrud = () => {
           });
         }}
       >
-        Add product
+        Dodaj produkt
       </button>
 
       <table className='table table-striped mt-4'>
         <thead>
           <tr>
             <th scope='col'>#</th>
-            <th scope='col'>Title</th>
-            <th scope='col'>Category</th>
-            <th scope='col'>Description</th>
-            <th scope='col'>Price</th>
-            <th scope='col'>Image</th>
-            <th scope='col'>Update</th>
-            <th scope='col'>Delete</th>
+            <th scope='col'>Tytuł</th>
+            <th scope='col'>Kategoria</th>
+            <th scope='col'>Opis</th>
+            <th scope='col'>Cena</th>
+            <th scope='col'>Zdjęcie</th>
+            <th scope='col'>Zmień</th>
+            <th scope='col'>Usuń</th>
           </tr>
         </thead>
         <tbody>
@@ -130,7 +131,7 @@ const ProductCrud = () => {
                   onClick={() => updateProduct(item.id, item)}
                   className='btn btn-info'
                 >
-                  Update
+                  Zmień
                 </button>
               </td>
               <td>
@@ -138,7 +139,7 @@ const ProductCrud = () => {
                   className='btn btn-danger'
                   onClick={() => handleDeleteProduct(item.id)}
                 >
-                  Delete
+                  Usuń
                 </button>
               </td>
             </tr>
@@ -155,7 +156,7 @@ const ProductCrud = () => {
           <div className='modal-content'>
             <div className='modal-header'>
               <h1 className='modal-title fs-5' id='exampleModalLabel'>
-                {editMode ? 'Update Product' : 'Add Product'}
+                {editMode ? 'Zmień produkt' : 'Dodaj produkt'}
               </h1>
               <button
                 type='button'
@@ -166,7 +167,7 @@ const ProductCrud = () => {
             </div>
             <div className='modal-body'>
               <div className='mb-3'>
-                <label className='form-label'>Title</label>
+                <label className='form-label'>Tytuł</label>
                 <input
                   type='text'
                   name='title'
@@ -177,7 +178,7 @@ const ProductCrud = () => {
                 />
               </div>
               <div className='mb-3'>
-                <label className='form-label'>Category</label>
+                <label className='form-label'>Kategoria</label>
                 <input
                   type='text'
                   name='category'
@@ -188,7 +189,7 @@ const ProductCrud = () => {
                 />
               </div>
               <div className='mb-3'>
-                <label className='form-label'>Description</label>
+                <label className='form-label'>Opis</label>
                 <input
                   type='text'
                   name='description'
@@ -199,7 +200,7 @@ const ProductCrud = () => {
                 />
               </div>
               <div className='mb-3'>
-                <label className='form-label'>Price</label>
+                <label className='form-label'>Cena</label>
                 <input
                   type='number'
                   name='price'
@@ -210,7 +211,7 @@ const ProductCrud = () => {
                 />
               </div>
               <div className='mb-3'>
-                <label className='form-label'>Image</label>
+                <label className='form-label'>Zdjęcie</label>
                 <input
                   type='text'
                   name='image'
@@ -227,7 +228,7 @@ const ProductCrud = () => {
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
               >
-                Close
+                Zamknij
               </button>
               <button
                 type='button'
@@ -235,7 +236,7 @@ const ProductCrud = () => {
                 onClick={handleSaveProduct}
                 className='btn btn-primary'
               >
-                Save changes
+                Zapisz
               </button>
             </div>
           </div>

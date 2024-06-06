@@ -9,10 +9,13 @@ import Login from './components/Login';
 import Shopping from './components/Shopping';
 import ProductCrud from './components/ProductCrud';
 import About from './components/About';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function Router() {
   return (
     <BrowserRouter>
+    <ToastContainer />
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />}></Route>

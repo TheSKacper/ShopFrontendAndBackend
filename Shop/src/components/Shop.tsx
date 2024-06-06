@@ -5,7 +5,7 @@ import ShopCard from './ShopCard';
 import FilterByCategory from './FilterByCategory';
 
 const Shop = () => {
-  const {products} = useProducts();
+  const { products } = useProducts();
   const [searchName, setSearchName] = useState('');
   const [searchCategory, setSearchCategory] = useState('');
 
@@ -20,10 +20,15 @@ const Shop = () => {
     return foundCategory && foundName;
   });
 
-  if(products?.length === -1 || !products)
-    {
-      return <div className='w-100'>Loading...</div>
-    }
+  if (products?.length === -1 || !products) {
+    return (
+      <div className='shop'>
+        <div className='spinner-border' role='status'>
+          <span className='visually-hidden'>Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='shop container'>
@@ -31,7 +36,7 @@ const Shop = () => {
       <FilterByCategory
         searchCategory={(category: string) => setSearchCategory(category)}
       />
-      <div className='row gap-3 mt-5 d-flex justify-content-center align-items-center'>
+      <div className='row gap-3 mt-5 mb-3 d-flex justify-content-center align-items-center'>
         {searchedProducts?.map((item) => (
           <ShopCard key={item.id} products={item} />
         ))}

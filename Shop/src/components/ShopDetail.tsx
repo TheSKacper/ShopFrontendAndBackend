@@ -14,12 +14,10 @@ const ShopDetail = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
 
-  console.log(id)
-
   const productFound = products?.find((item) => item.id === id);
   const ratingFound = ratings?.filter((item) => item.productId === id);
 
-  console.log(ratingFound)
+  console.log(ratingFound);
 
   return (
     <div className='shopDetail container-fluid bg-black'>
@@ -50,19 +48,20 @@ const ShopDetail = () => {
         </button>
       </div>
       <div className='shopDetail-comments'>
-        {loginReducer.success === true ? (
-          <div className='leftShopDetail'>
-            <h3 className='mt-4 text-white'>Add comment</h3>
-            {id && <Rating idProduct={id} />}
-          </div>
-        ) : null}
         {ratingFound?.length === 0 ? (
-          <h3 className='mt-5 text-white'>No Comments </h3>
+          <h3 className='mt-5 text-white'>Brak komentarzy </h3>
         ) : (
           <div className='rightShopDetail'>
+            <h1 className='text-center text-white mt-5'>Komentarze</h1>
             {id && <Comments idProduct={id} />}
           </div>
         )}
+        {loginReducer.success === true ? (
+          <div className='leftShopDetail'>
+            <h3 className='mt-5 mb-3 text-white'>Dodaj komentarz</h3>
+            {id && <Rating idProduct={id} />}
+          </div>
+        ) : null}
       </div>
     </div>
   );

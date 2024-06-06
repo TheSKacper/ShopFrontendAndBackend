@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { LoginRequest, LoginResponse } from '../model/login';
 import ApiService from '../service/ApiService';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogin } from '../reducer/loginSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [data, setDate] = useState<LoginRequest>({
@@ -13,6 +14,7 @@ const Login = () => {
   const [register, setRegister] = useState<boolean>(false);
   const dispatch = useDispatch();
   const navigation = useNavigate();
+  const notify = (message: string) => toast(message);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,18 +24,19 @@ const Login = () => {
     }));
   };
 
-  const logIn = (e) => {
+  const logIn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     ApiService.post<LoginResponse>('/auth/login', data)
       .then((res) => {
         dispatch(
           setLogin({
-            id:res.data.id ,
+            id: res.data.id,
             username: res.data.username,
             role: res.data.role,
             success: res.data.success,
           }),
-          navigation('/')
+          navigation('/'),
+          notify('Witamy na naszej stronie ' + data.username)
         );
       })
       .catch((error: Error) => {
@@ -41,7 +44,25 @@ const Login = () => {
       });
   };
 
-  const handleRegister = () => {
+  const handleRegisterSubmit = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    ApiService.post('/auth/register', data)
+      .then((res) => {
+        setRegister((prevRegister) => !prevRegister);
+        setDate({ username: '', password: '' });
+        notify('Rejestracja pomyślnie, witamy na pokładzie ' + data.username);
+      })
+      .catch((error: Error) => {
+        console.log(error);
+      });
+  };
+
+  const handleRegister = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
     if (register) {
       setRegister(false);
     } else {
@@ -51,49 +72,56 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <div className='login-left'>
-        {!register ? <h1>Login Side</h1> : <h1>Register side</h1>}
-        {!register ? (
-          <p>You do not have an account ? </p>
+      <form className='login-form'>
+        {register ? (
+          <h1 className='m-3'>Rejestracja</h1>
         ) : (
-          <p>You have an account ? </p>
+          <h1 className='m-3'>Logowanie</h1>
         )}
-        <button onClick={handleRegister} className='btn btn-info'>
-          {!register ? 'Register' : 'Login'}
-        </button>
-      </div>
-      <div className='login-right'>
-        {!register ? (
-          <h2 className='mb-5'>Login</h2>
-        ) : (
-          <h2 className='mb-5'>Register</h2>
-        )}
-        <form className='login-form' onSubmit={logIn}>
-          <div className='mb-3'>
-            <label className='form-label'>User Name</label>
-            <input
-              type='text'
-              onChange={handleChange}
-              className='form-control'
-              name='username'
-              value={data.username}
-            />
-          </div>
-          <div className='mb-3'>
-            <label className='form-label'>Password</label>
-            <input
-              type='password'
-              className='form-control'
-              name='password'
-              value={data.password}
-              onChange={handleChange}
-            />
-          </div>
-          <button type='submit' className='btn btn-primary'>
-            Submit
+        <h3 className='text-center mb-4'>
+          <i className='bi bi-shop'></i>
+        </h3>
+        <label>Nazwa użytkownika</label>
+        <input
+          className='mb-3 form-control'
+          type='text'
+          name='username'
+          onChange={handleChange}
+          value={data.username}
+        />
+        <label>Hasło</label>
+        <input
+          className='mb-5 form-control'
+          type='password'
+          name='password'
+          onChange={handleChange}
+          value={data.password}
+        />
+        {register ? (
+          <button
+            onClick={(e) => handleRegisterSubmit(e)}
+            className='login-btn mb-3'
+          >
+            Zarejestruj
           </button>
-        </form>
-      </div>
+        ) : (
+          <button
+            onClick={(e) => logIn(e)}
+            className='login-btn mb-3 login-btn'
+          >
+            Zaloguj
+          </button>
+        )}
+        {register ? (
+          <button onClick={(e) => handleRegister(e)} className='login-register'>
+            Zaloguj się
+          </button>
+        ) : (
+          <button onClick={(e) => handleRegister(e)} className='login-register'>
+            Zarejestruj się
+          </button>
+        )}
+      </form>
     </div>
   );
 };

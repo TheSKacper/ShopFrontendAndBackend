@@ -36,7 +36,7 @@ const Rating = (product: Props) => {
   const handleCreateRating = () => {
     const jsonData: Ratings = data;
     try {
-      ApiService.post('/rating', jsonData).then((res) => {
+      ApiService.post('/rating', jsonData).then(() => {
         fetchRatings()
         console.log('created');
       });
@@ -49,7 +49,7 @@ const Rating = (product: Props) => {
   return (
     <div className=''>
       <div className='mb-3 mt-4 w-100 text-white'>
-        <label className='form-label'>Email address</label>
+        <label className='form-label'>Ocena 1-5</label>
         <input
           type='number'
           name='rating'
@@ -59,7 +59,7 @@ const Rating = (product: Props) => {
         />
       </div>
       <div className='w-100 text-white'>
-        <label className='form-label'>Example textarea</label>
+        <label className='form-label'>Opinia</label>
         <textarea
           name='comment'
           value={data.comment}

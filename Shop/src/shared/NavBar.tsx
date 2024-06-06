@@ -38,7 +38,7 @@ const NavBar = () => {
                 className={active === 'shop' ? 'nav-link active' : 'nav-link'}
                 to='/shop'
               >
-                Shop
+                Sklep
               </Link>
             </li>
             <li className='nav-item'>
@@ -49,7 +49,7 @@ const NavBar = () => {
                 }
                 to='/about'
               >
-                About
+                O nas
               </Link>
             </li>
             <li className='nav-item'>
@@ -60,7 +60,7 @@ const NavBar = () => {
                 }
                 to='/contact'
               >
-                Contact
+                Kontakt
               </Link>
             </li>
             {shopReducer.shopping.length > 0 ? (
@@ -72,7 +72,7 @@ const NavBar = () => {
                   }
                   onClick={() => setActive('shopping')}
                 >
-                  Shopping
+                  Zakupy
                 </Link>
               </li>
             ) : null}
@@ -104,7 +104,7 @@ const NavBar = () => {
                   }
                   to='/login'
                 >
-                  Login
+                  Logowanie
                 </Link>
               </li>
             )}

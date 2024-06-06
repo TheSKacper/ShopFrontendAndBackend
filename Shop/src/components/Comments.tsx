@@ -7,6 +7,14 @@ interface Props {
 const Comments = ({ idProduct }: Props) => {
   const { ratings } = useRatings();
 
+  const renderStars = (rating:number) => {
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<i key={i} className='bi bi-star-fill'></i>);
+    }
+    return stars;
+  };
+
   const foundComments = ratings?.filter((item) => item.productId === idProduct);
 
   return (
@@ -14,7 +22,7 @@ const Comments = ({ idProduct }: Props) => {
       <ul className='list-group'>
         {foundComments?.map((item) => (
           <li key={item.id} className='list-group-item'>
-            {item.comment} || {item.rating}
+            {renderStars(item.rating)} <br /> {item.comment} <br />
           </li>
         ))}
       </ul>

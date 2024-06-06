@@ -6,6 +6,7 @@
 
 body {
   min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* NAV */
@@ -67,44 +68,79 @@ body {
 .login {
   min-height: 100vh;
   display: flex;
-}
-
-.login-left {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  color: white;
-  background-color: rgb(0, 0, 0);
-}
-
-.login-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+  background-color: black;
 }
 
 .login-form {
-  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
 }
 
-.form-label {
-  letter-spacing: 3px;
+.login-register {
+  border: none;
+  background-color: white;
+}
+
+.login-btn {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 255, 0.5) 0%,
+    rgba(64, 0, 191, 0.5) 50%,
+    rgba(128, 0, 128, 0.5) 100%
+  );
+
+  border-radius: 30px;
+  border: none;
+  padding: 10px;
 }
 
 /* Contact */
 
 .contact {
   min-height: 100vh;
+  background-color: rgb(212, 212, 212);
+}
+
+.contact-h1 {
+  letter-spacing: 2px;
+}
+
+.contact-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-right {
+  flex: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-span {
+  font-weight: bold;
+}
+
+.contact-left {
+  flex: 50%;
+  padding: 40px;
 }
 
 /* CARD */
 
 .card {
   width: 16rem;
+  border: none;
+  text-decoration: none;
+  background-color: rgb(255, 252, 246);
 }
 
 /* SHOP */
@@ -131,19 +167,17 @@ body {
 }
 .shopDetail-comments {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
 .leftShopDetail {
-  flex: 50%;
-  padding: 30px;
+  width: 70%;
 }
 
 .rightShopDetail {
-  padding: 30px;
-  flex: 50%;
+  width: 70%;
 }
 
 /* SHOPPING */
@@ -168,51 +202,75 @@ body {
   min-height: 100vh;
 }
 
-.about-right {
+.about-box {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
+  justify-content: space-between;
+  background-color: rgb(219, 219, 219);
   padding: 60px;
-  background-color: black;
-  color: white;
+}
+
+.second {
+  background-color: white;
 }
 
 .about-left {
+  line-height: 30px;
   width: 50%;
 }
 
 .about-image {
-  width: 60%;
-  height: 300px;
-  border-radius: 20px;
-}
-
-.about-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px;
-}
-
-.first {
-  background-image: url('./assets/woman-7607340_1280.jpg');
-  background-position: 45% 25%;
-}
-
-.second {
-  background-image: url('./assets/mentor-2494673_1280.jpg');
-  background-position: 65% 8%;
+  width: 40%;
 }
 
 /* Comments */
 
-.coments-container
-{
-  max-height: 200px;
+.coments-container {
+  max-height: 300px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 5px;
+}
+
+@media (max-width: 576px) {
+  .contact-box {
+    flex-direction: column;
+  }
+
+  .contact-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .about-right {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .about-left {
+    width: 100%;
+  }
+
+  .about-image {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (min-width: 820px) {
+  .login-left {
+    font-size: 30px;
+  }
+
+  .login-right {
+    font-size: 30px;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
 }
