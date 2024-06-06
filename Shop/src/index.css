@@ -240,13 +240,12 @@ body {
     flex-direction: column;
   }
 
-  .about {
+  .about-box {
+    display: flex;
     flex-direction: column;
-  }
-
-  .about-right {
-    width: 100%;
-    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
 
   .about-left {
@@ -254,7 +253,7 @@ body {
   }
 
   .about-image {
-    width: 90%;
+    width: 100%;
   }
 }
 
