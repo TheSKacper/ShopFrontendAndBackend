@@ -27,7 +27,9 @@ const Rating = (product: Props) => {
     setData({ ...data, userId: loginRedux.id, productId: product.idProduct });
   }, []);
 
-  const handleRating = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRating = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setData((prev) => ({
       ...prev,
@@ -36,7 +38,8 @@ const Rating = (product: Props) => {
   };
 
   const handleCreateRating = () => {
-    const jsonData: Ratings = data;
+    const jsonData: Ratings = { ...data, id: '' };
+
     try {
       ApiService.post('/rating', jsonData).then(() => {
         fetchRatings();

@@ -40,7 +40,7 @@ const ShopDetail = () => {
         </p>
         <button
           className='btn btn-primary mt-4'
-          onClick={() => dispatch(addProduct(productFound))}
+          onClick={() => productFound && dispatch(addProduct(productFound))}
         >
           Buy
         </button>

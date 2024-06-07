@@ -49,7 +49,7 @@ const Login = () => {
   ) => {
     e.preventDefault();
     ApiService.post('/auth/register', data)
-      .then((res) => {
+      .then(() => {
         setRegister((prevRegister) => !prevRegister);
         setDate({ username: '', password: '' });
         notify('Rejestracja pomyślnie, witamy na pokładzie ' + data.username);
